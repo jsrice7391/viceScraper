@@ -17,8 +17,11 @@ const getArticles = () => {
             var headline = $(element).children().next().next().children().children("h2").text();
             // This will be the sub text for the article.
             var subText = $(element).children().next().next().children().children("div").text();
+            // This is the link to the photo
+            var photoLink = $(element).children().next().children().next().children().children()
 
-            console.log(subText)
+
+            console.log(photoLink)
         })
 
     })

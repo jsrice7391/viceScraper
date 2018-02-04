@@ -15,8 +15,10 @@ const getArticles = () => {
             var link = $(element).attr("href");
             // This will be the headline for the Article 
             var headline = $(element).children().next().next().children().children("h2").text();
+            // This will be the sub text for the article.
+            var subText = $(element).children().next().next().children().children("div").text();
 
-            console.log(headline)
+            console.log(subText)
         })
 
     })

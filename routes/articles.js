@@ -8,15 +8,15 @@ const getArticles = () => {
     request("https://www.vice.com/en_us", (err, response, body) => {
         // Loads the body of the page.
         const $ = cheerio.load(body);
-
         var results = [];
-
         // VICE is nice because all of their articles hide within a master div. All of their article links have the same class and are children of this parent div.
         $("div.grd-row").children().each((i, element) => {
             // This will take the links from the articles
             var link = $(element).attr("href");
+            // This will be the headline for the Article 
+            var headline = $(element).children().next().next().children().children("h2").text();
 
-            console.log(link)
+            console.log(headline)
         })
 
     })

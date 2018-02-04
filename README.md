@@ -5,7 +5,7 @@ This is an application that uses Cheerio, Request, Handlebars, React and Mongo D
 <h1>Packages Used</h1>
 <ul>
 <li>Cheerio: https://www.npmjs.com/package/cheerio</li>
-<li>Requesdt: https://www.npmjs.com/package/request<li>
+<li>Request: https://www.npmjs.com/package/request</li>
 <li>Handlebars: http://handlebarsjs.com/</li>
 <li>Mongoose: http://mongoosejs.com/</li>
 </ul>

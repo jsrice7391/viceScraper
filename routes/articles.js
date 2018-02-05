@@ -16,10 +16,13 @@ const getArticles = () => {
             // This will be the headline for the Article 
             const headline = $(element).children().next().next().children().children("h2").text();
             // This will be the sub text for the article.
-            const subText = $(element).children().next().next().children().children("div").text();
+            const subText = $(element).children().next().next().children().children("div .grid__wrapper__card__text__summary").text();
             // This is the link to the photo
+            const author = $(element).children().next().next().children().children().next().next().text();
+
+
             // const photoLink = $(element).children().next().children().next().children().children().attr("class");
-            console.log(subText)
+            console.log(author)
         })
 
     })

@@ -12,16 +12,14 @@ const getArticles = () => {
         // VICE is nice because all of their articles hide within a master div. All of their article links have the same class and are children of this parent div.
         $("div.grd-row").children().each((i, element) => {
             // This will take the links from the articles
-            var link = $(element).attr("href");
+            const link = $(element).attr("href");
             // This will be the headline for the Article 
-            var headline = $(element).children().next().next().children().children("h2").text();
+            const headline = $(element).children().next().next().children().children("h2").text();
             // This will be the sub text for the article.
-            var subText = $(element).children().next().next().children().children("div").text();
+            const subText = $(element).children().next().next().children().children("div").text();
             // This is the link to the photo
-            var photoLink = $(element).children().next().children().next().children().children()
-
-
-            console.log(photoLink)
+            // const photoLink = $(element).children().next().children().next().children().children().attr("class");
+            console.log(subText)
         })
 
     })
@@ -30,6 +28,10 @@ const getArticles = () => {
 
 
 module.exports = (app) => {
+
+    app.get("/", function(req, res) {
+        res.render("index")
+    })
     app.get("/articles", function(req, res) {
         getArticles();
 

@@ -3,7 +3,6 @@ const app = express();
 const hbs = require("express-handlebars");
 const path = require("path");
 const bodyParser = require("body-parser");
-// const db = require("./models");
 
 var PORT = process.env.PORT || 8000;
 
@@ -23,6 +22,14 @@ app.set("view engine", "handlebars");
 require("./routes/html.js")(app);
 require("./routes/users.js")(app);
 require("./routes/articles.js")(app);
+
+// This is all the databse configuration
+var mongoose = require("mongoose");
+
+mongoose.Promise = Promise;
+mongoose.connect('mongodb://localhost/webScraper');
+
+
 
 
 

@@ -1,7 +1,6 @@
-<h1>Here is the index</h1> 
 
-Handlebars.registerHelper("moduloIf", function(index_count,mod,block) { if(parseInt(index_count)%(mod)=== 0){ return block.fn(this);}
-});
+
+
 
 
 
@@ -13,7 +12,7 @@ Handlebars.registerHelper("moduloIf", function(index_count,mod,block) { if(parse
    {{#each articles}}
 
         <div class="col s12 m6">
-            <div class="card blue-grey darken-1">
+            <div class="card blue-grey">
                 <div class="card-content white-text">
                     <a href="article/{{_id}}"><span class="card-title">{{title}}</span></a>
                     <p>{{subText}}</p>

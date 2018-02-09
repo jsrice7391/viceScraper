@@ -1,11 +1,13 @@
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const uniqueValidator = require("mongoose-unique-validator");
+const Schema = mongoose.Schema;
 
 
 var ArticleSchema = new Schema({
     title: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     author: {
         type: String,
@@ -13,7 +15,8 @@ var ArticleSchema = new Schema({
     },
     link: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     subText: {
         type: String
@@ -21,6 +24,17 @@ var ArticleSchema = new Schema({
     notes: []
 });
 
+
+// Add the Unique validator as a plugin for the mongoose schema
+ArticleSchema.plugin(uniqueValidator);
+
+
+
 var Article = mongoose.model("Article", ArticleSchema);
+
+
+
+
+
 
 module.exports = Article;

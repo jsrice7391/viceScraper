@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+{{!-- Load Jquery CDN --}}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <!-- Compiled and minified CSS  for Materialize-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     
@@ -12,12 +15,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
 
+
+
+{{!-- Load the Material Icons --}}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+{{!-- Load my CSS  --}}
+    <link href="/public/main.css" rel="stylesheet">
+
+
+
     <title>Document</title>
 </head>
 <body>
     <nav>
         <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">WebScraper</a>
+            <a href="/" class="brand-logo">WebScraper</a>
             <a href="#" data-activates="mobile-demo" class="button-collapse">
                 <i class="material-icons">menu</i>
             </a>
@@ -40,7 +53,12 @@
         </div>
     </nav>
 
+
     {{{body}}}
+
+
+{{!-- Load The UI side of the application --}}
+    <script src="/public/ui.js"></script>
     
 </body>
 </html>

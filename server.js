@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Allow the assets folder to be used for static content
-app.use("/assets", express.static("assets"));
+app.use("/public", express.static("public"));
 
 // Establish the engine as Handlebars and useing the Default view as the main.handlebars file
 app.engine("handlebars", hbs({ defaultLayout: "main" }));

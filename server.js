@@ -22,6 +22,8 @@ app.set("view engine", "handlebars");
 require("./routes/html.js")(app);
 require("./routes/users.js")(app);
 require("./routes/articles.js")(app);
+require("./routes/notes.js")(app);
+
 
 // This is all the databse configuration
 var mongoose = require("mongoose");

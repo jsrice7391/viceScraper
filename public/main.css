@@ -16,3 +16,13 @@
     height: 400px;
 
 }
+
+.comment {
+    background-color: aquamarine;
+    padding: 2.5%;
+    width:100%;
+}
+
+.comment p {
+    padding-bottom:8%;
+}

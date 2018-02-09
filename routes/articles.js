@@ -49,6 +49,7 @@ module.exports = (app) => {
             {title: req.body.article},
             {$push:{notes: {
                 note: req.body.note,
+                article: req.body.article,
                 dateCreated: Date.now()
             }}},
             function(err, model){
@@ -59,7 +60,10 @@ module.exports = (app) => {
                     console.log("Updated" + model);
                 }
             })
+    })
 
+    app.put("/notes/:title", function(req, res){
+        console.log(req.body.title)
     })
 
     app.get("/", function(req, res) {
@@ -74,9 +78,10 @@ module.exports = (app) => {
         res.redirect("/")
     })
 
-    app.get("/article/:id", function(req, res){
-        console.log(req.params)
-        db.Article.findById(req.params.id, function(err, article){
+    app.get("/article/:title", function(req, res){
+        db.Article.findOne({
+            title: req.params.title
+        }, function(err, article){
             if(err)throw err;
             res.render("article", {article: article});
         })       

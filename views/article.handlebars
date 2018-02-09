@@ -42,7 +42,19 @@
                     <p>{{article.subText}}</p>
                     <hr>
                      {{#each article.notes}}
-                    <p>"{{note}}"</p>
+                     <div class="row">
+                         <div class="container">
+                            <div class="comment">
+                                <p>"{{note}}"</p>  
+                                <a class="halfway-fab waves-effect waves-light red btn commentDelete" elementId="{{article}}" >
+                                    <i class="material-icons">delete</i>
+                                </a>
+                              
+                            
+                            </div>
+                         </div> 
+                    </div>
+                  
                     {{else}}
                     <p class="empty">No content</p>
                     {{/each}}

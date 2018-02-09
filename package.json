@@ -16,6 +16,7 @@
     "materialize-css": "^0.100.2",
     "mongodb": "^3.0.2",
     "mongoose": "^5.0.3",
+    "mongoose-paginate": "^5.0.3",
     "request": "^2.83.0"
   }
 }

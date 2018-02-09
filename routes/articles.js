@@ -2,6 +2,11 @@ const path = require("path");
 const cheerio = require("cheerio");
 const request = require("request");
 const Article = require("../models/article.js");
+const mongoose = require("mongoose");
+const db = require("../models")
+
+
+
 
 
 const getArticles = () => {
@@ -21,11 +26,15 @@ const getArticles = () => {
             // This is the author
             const author = $(element).children().next().next().children().next().children().text()
                 // const photoLink = $(element).children().next().children().next().children().children().attr("class");
-
-            Article.create({ title: headline, author: author, link: link, subText: subText }).then(function(result) {
-                return result;
-            })
-
+        
+            if(link && headline && subText && author){
+                    Article.create({ title: headline, author: author, link: link, subText: subText })
+                    .then(function(result) {
+                        console.log(result);
+                    }).catch(function(){
+                        console.log("Something went wrong");
+                    })
+            }
         })
 
     })
@@ -36,10 +45,17 @@ const getArticles = () => {
 module.exports = (app) => {
 
     app.get("/", function(req, res) {
-        res.render("index")
+        db.Article.find({}, function(err,results){
+            if(err){
+                return console.log(err)
+            }else{
+                console.log(results)
+                 res.render("index", {articles: results});
+            }
+        })
     })
     app.get("/articles/scrape", function(req, res) {
         getArticles()
-        res.send("Check the console for the articles")
+        res.redirect("/")
     })
 }

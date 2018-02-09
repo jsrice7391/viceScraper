@@ -3,6 +3,15 @@
     display: inline;
 }
 
+#hero{
+    background-image: url("/public/images/book.jpg");
+    height: 500px;
+    width:100%;
+    background-position: center-top;
+
+
+}
+
 .card-image img {
     height: 400px;
 

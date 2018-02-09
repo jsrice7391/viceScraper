@@ -45,19 +45,30 @@ const getArticles = () => {
 module.exports = (app) => {
 
     app.post("/notes", (req,res) => {
-        console.log(req.body)
+            db.Article.findOneAndUpdate(
+            {title: req.body.article},
+            {$push:{notes: {
+                note: req.body.note,
+                dateCreated: Date.now()
+            }}},
+            function(err, model){
+                if(err){
+                    return console.log(err)
+                }
+                else{
+                    console.log("Updated" + model);
+                }
+            })
 
     })
 
     app.get("/", function(req, res) {
-        db.Article.find({}, (err,results)=>{
-            if(err){
-                return console.log(err)
-            }else{
-                res.render("index", {articles: results});
-            }
+        db.Article.find({}, function(err, results){
+            if(err) throw err;
+            res.render("index", {articles: results})
         })
-    })
+        })
+ 
     app.get("/articles/scrape", function(req, res) {
         getArticles()
         res.redirect("/")

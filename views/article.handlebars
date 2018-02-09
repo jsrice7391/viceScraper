@@ -2,23 +2,24 @@
 <!-- Modal Structure -->
 <div id="modal1" class="modal">
     <div class="modal-content">
-        <h4>Add a Note to {{article.title}}</h4>
+        <h4>Add a Note</h4>
         <hr>
         <form action="/notes" id="usrform" method="POST">
         <div class="row">
+            <lebel for="article">Article:</lebel>
+            <input type="text" value="{{article.title}}" class="field left" name="article" readonly>
             <div class="input-field col s12">
                 <textarea id="textarea1" class="materialize-textarea" name="note"></textarea>
                 <label for="textarea1">Textarea</label>
+               
             </div>
         </div>
-
-
-            <input type="submit">
+            <input type="submit" >
         </form>
 
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
 </div>
 

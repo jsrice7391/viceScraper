@@ -1,6 +1,23 @@
 <h1>Here is the index</h1> 
 
+Handlebars.registerHelper("moduloIf", function(index_count,mod,block) { if(parseInt(index_count)%(mod)=== 0){ return block.fn(this);}
+});
 
-{{#each articles}}
-<h1>Results: {{title}}</h1>
-{{/each}}
+
+    <div class="row">
+   {{#each articles}}
+        <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">{{title}}</span>
+                    <p>{{subText}}</p>
+                </div>
+                <div class="card-action">
+                    <p>{{author}}</p>
+                    <a href="article/{{_id}}">This is a link</a>
+                </div>
+            </div>
+          
+        </div>
+        {{/each}}
+    </div>

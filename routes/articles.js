@@ -49,13 +49,20 @@ module.exports = (app) => {
             if(err){
                 return console.log(err)
             }else{
-                console.log(results)
-                 res.render("index", {articles: results});
+                res.render("index", {articles: results});
             }
         })
     })
     app.get("/articles/scrape", function(req, res) {
         getArticles()
         res.redirect("/")
+    })
+
+    app.get("/article/:id", function(req, res){
+        console.log(req.params)
+        db.Article.findById(req.params.id, function(err, article){
+            if(err)throw err;
+            res.render("article", {article: article});
+        })       
     })
 }

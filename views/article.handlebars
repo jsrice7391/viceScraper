@@ -1,16 +1,24 @@
 
-
-<!-- Modal Trigger -->
-<a class="waves-effect waves-light btn modal-trigger">Modal</a>
-
 <!-- Modal Structure -->
 <div id="modal1" class="modal">
     <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
+        <h4>Add a Note to {{article.title}}</h4>
+        <hr>
+        <form action="/notes" id="usrform" method="POST">
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea id="textarea1" class="materialize-textarea" name="note"></textarea>
+                <label for="textarea1">Textarea</label>
+            </div>
+        </div>
+
+
+            <input type="submit">
+        </form>
+
     </div>
     <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
     </div>
 </div>
 
@@ -23,6 +31,7 @@
                 <div class="card-image">
                     <img src="/public/images/reader.jpg">
           
+                    {{!-- This is the button that will trigger the modal. --}}
                     <a class="btn-floating halfway-fab waves-effect waves-light red btn modal-trigger" href="#modal1" data-target="modal">
                         <i class="material-icons">add</i>
                     </a>

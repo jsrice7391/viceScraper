@@ -44,8 +44,13 @@ const getArticles = () => {
 
 module.exports = (app) => {
 
+    app.post("/notes", (req,res) => {
+        console.log(req.body)
+
+    })
+
     app.get("/", function(req, res) {
-        db.Article.find({}, function(err,results){
+        db.Article.find({}, (err,results)=>{
             if(err){
                 return console.log(err)
             }else{

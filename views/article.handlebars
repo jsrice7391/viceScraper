@@ -40,6 +40,13 @@
                 <div class="card-content">
                     <a href="http://www.vice.com{{article.link}}"><span class="card-title">{{article.title}}</span></a>
                     <p>{{article.subText}}</p>
+                    <hr>
+                     {{#each article.notes}}
+                    <p>"{{note}}"</p>
+                    {{else}}
+                    <p class="empty">No content</p>
+                    {{/each}}
+
                 </div>
             </div>
         </div>

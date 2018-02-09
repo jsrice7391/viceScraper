@@ -44,24 +44,6 @@ const getArticles = () => {
 
 module.exports = (app) => {
 
-    app.post("/notes", (req,res) => {
-            db.Article.findOneAndUpdate(
-            {title: req.body.article},
-            {$push:{notes: {
-                note: req.body.note,
-                article: req.body.article,
-                dateCreated: Date.now()
-            }}},
-            function(err, model){
-                if(err){
-                    return console.log(err)
-                }
-                else{
-                    console.log("Updated" + model);
-                }
-            })
-    })
-
     app.put("/notes/:title", function(req, res){
         console.log(req.body.title)
     })
@@ -78,12 +60,14 @@ module.exports = (app) => {
         res.redirect("/")
     })
 
+
     app.get("/article/:title", function(req, res){
-        db.Article.findOne({
-            title: req.params.title
-        }, function(err, article){
-            if(err)throw err;
+        db.Article.findOne({ title: req.params.title })
+       .populate("Note", "text")
+          .exec(function(err, article) {
+            if (err) return handleError(err);
+            res.json(article);
             res.render("article", {article: article});
-        })       
+          });      
     })
 }

@@ -10,6 +10,16 @@ module.exports = (app) => {
         console.log(req.body.title)
     })
 
+    app.post("/notes", function(req,res){
+        db.Note.create({
+            text:req.body.note
+        }).then(function(dbNote){
+           return  db.Article.findOneAndUpdate({ title: req.body.article }, { $push: { notes: dbNote}}, { new: true })
+        }).then(function(dbArticle){
+            res.redirect("/")
+        })
+    })
+
     app.get("/notes/:title", function(req,res){
         db.Article.findOne({
             title: req.params.title
@@ -18,6 +28,4 @@ module.exports = (app) => {
         })
     })
     
-
-
 }

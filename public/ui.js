@@ -3,6 +3,18 @@ $(document).ready(function(){
 
      $(".button-collapse").sideNav();
 
+     $("#articleModal").on("click", function(){
+         $.get("/articles/scrape",function(data){
+            $("#articleModal").modal();
+         });
+     });
+
+     $("#articleModal").on("hidden", function(){
+         location.reload();
+         
+     })
+
+
 
     console.log("WINNER")
 

@@ -28,6 +28,18 @@
     <title>Document</title>
 </head>
 <body>
+    <!-- Modal Structure -->
+    <div id="articleModal" class="modal">
+        <div class="modal-content">
+            <h4>Articles have been Scraped from VICE!</h4>
+            
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+    
     <nav>
         <div class="container">
         <div class="nav-wrapper">
@@ -40,7 +52,7 @@
                     <a href="/about">About</a>
                 </li>
                 <li>
-                    <a href="/articles/scrape" class="waves-effect waves-light btn">Scrape for articles</a>
+                    <a id="articleModal" class="waves-effect waves-light btn modal-trigger" href="#articleModal">Scrape for articles</a>
                 </li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
@@ -48,7 +60,7 @@
                     <a href="/about">About</a>
                 </li>
                 <li>
-                    <a href="/articles/scrape" class="waves-effect waves-light btn">Scrape for articles</a>
+                    <a id="articleModal"href="/articles/scrape" class="modal-action modal-close waves-effect waves-green btn-flat">Scrape for articles</a>
                 </li>
             </ul>
         </div>

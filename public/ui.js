@@ -10,7 +10,7 @@ $(document).ready(function(){
      });
 
      $("#articleModal").on("hidden", function(){
-         location.reload();
+         window.reload();
          
      })
 
@@ -22,13 +22,13 @@ $(document).ready(function(){
     $('.modal').modal();
 
     $(".commentDelete").on("click", function(){
-              const buttonTitle = $(this).attr("elementId");
+              const buttonId = $(this).attr("elementId");
 
               $.ajax({
                 type: "PUT",
                 url: "/notes",
                 data: {
-                  title: buttonTitle
+                  id: buttonId
                 }
               }).done(function() {
                 console.log("NAILED IT");

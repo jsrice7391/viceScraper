@@ -7,7 +7,13 @@ const db = require("../models")
 module.exports = (app) => {
 
     app.put("/notes", function(req, res){
-        console.log(req.body.title)
+        db.Note.findByIdAndRemove(req.body.id, (err, result) => {
+            if(err){
+                return console.log(err)
+            }else{
+                res.status(200).send("Item deleted")
+            }
+        })
     })
 
     app.post("/notes", function(req,res){

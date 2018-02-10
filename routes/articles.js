@@ -63,10 +63,11 @@ module.exports = (app) => {
 
     app.get("/article/:title", function(req, res){
         db.Article.findOne({ title: req.params.title })
-       .populate("Note", "text")
+       .populate("notes")
           .exec(function(err, article) {
             if (err) return handleError(err);
-            res.json(article);
+            // res.json(article);
+            console.log(article)
             res.render("article", {article: article});
           });      
     })

@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
 
+
      $(".button-collapse").sideNav();
 
      $("#articleModal").on("click", function(){
@@ -9,14 +10,25 @@ $(document).ready(function(){
          });
      });
 
-     $("#articleModal").on("hidden", function(){
-         window.reload();
-         
+     $("#articleModal").on("hidden", function() {
+        console.log("HIDDEN")
+     });
+
+     $(".saver").on("click", function(){
+       const theId = $(this).attr("elementId");
+       
+               $.ajax({
+                 type: "PUT",
+                 url: "/save",
+                 data: {
+                   id: theId
+                 }
+               }).done(function() {
+                 console.log("NAILED IT");
+               });
+
+
      })
-
-
-
-    console.log("WINNER")
 
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
     $('.modal').modal();
@@ -34,9 +46,5 @@ $(document).ready(function(){
                 console.log("NAILED IT");
               });
     })
-  
-    
-     
-
 
 })

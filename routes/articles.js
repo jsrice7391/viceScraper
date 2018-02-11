@@ -60,6 +60,30 @@ module.exports = (app) => {
         res.redirect("/")
     })
 
+    app.put("/save", function(req,res){
+        console.log(req.body.id)
+        db.Article.findByIdAndUpdate(req.body.id, { saved: true },function(err,article){
+              if(err){
+                  throw err
+              }else{
+                  res.redirect("/saved");
+              }
+          })
+    });
+
+    app.get("/saved", function(req,res){
+        console.log("Here")
+        db.Article.find({
+            saved: true
+        },function(err, results){
+            if(err){
+                throw err;
+            }else{
+                res.render("saved",{articles: results})
+            }
+        })
+    })
+
 
     app.get("/article/:title", function(req, res){
         db.Article.findOne({ title: req.params.title })
@@ -67,7 +91,6 @@ module.exports = (app) => {
           .exec(function(err, article) {
             if (err) return handleError(err);
             // res.json(article);
-            console.log(article)
             res.render("article", {article: article});
           });      
     })

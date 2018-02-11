@@ -1,15 +1,13 @@
 .card {
     float: left;
-    display: inline;
 }
 
 #hero{
     background-image: url("/public/images/book.jpg");
     height: 500px;
     width:100%;
-    background-position: center-top;
-
-
+    background-position: bottom;
+    background-size: cover;
 }
 
 .card-image img {
@@ -25,4 +23,9 @@
 
 .comment p {
     padding-bottom:8%;
+}
+
+#articleDrop li{
+    display: inline;
+    float: right;
 }

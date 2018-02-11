@@ -21,6 +21,10 @@ var ArticleSchema = new Schema({
     subText: {
         type: String
     },
+    saved:{
+        type: Boolean,
+        default: false
+    },
     notes: [
     {
       // Store ObjectIds in the array

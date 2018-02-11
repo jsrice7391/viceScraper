@@ -29,7 +29,7 @@ require("./routes/notes.js")(app);
 var mongoose = require("mongoose");
 
 mongoose.Promise = Promise;
-mongoose.connect('mongodb://localhost/webScraper');
+mongoose.connect("mongodb://heroku_7p68d9dx:p87r9sgoneb9rr7c4joo6d430g@ds035290.mlab.com:35290/heroku_7p68d9dx");
 
 
 

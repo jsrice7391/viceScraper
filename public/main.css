@@ -4,15 +4,24 @@
 
 #hero{
     background-image: url("/public/images/book.jpg");
-    height: 500px;
+    height: 400px;
     width:100%;
     background-position: bottom;
     background-size: cover;
+    margin-top: -30px;
+}
+
+#hero h1{
+    color: white;
+    padding-top: 10%;
 }
 
 .card-image img {
     height: 400px;
+}
 
+nav {
+    background-color: #0d47a1;
 }
 
 .menuCard a{

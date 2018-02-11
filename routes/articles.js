@@ -72,7 +72,6 @@ module.exports = (app) => {
     });
 
     app.get("/saved", function(req,res){
-        console.log("Here")
         db.Article.find({
             saved: true
         },function(err, results){

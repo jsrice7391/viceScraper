@@ -15,6 +15,13 @@
 
 }
 
+.menuCard a{
+    text-decoration: none;
+    color: white;
+
+
+}
+
 .comment {
     background-color: aquamarine;
     padding: 2.5%;

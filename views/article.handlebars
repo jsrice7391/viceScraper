@@ -39,7 +39,8 @@
                                 <i class="material-icons">edit</i>
                             </a>
                         </li>
-                        {{#if saved}}
+
+                        {{#if article.saved}}
                         <li>
                             <a class="btn-floating blue saver" elementId={{article._id}}>
                                 <i class="material-icons">check</i>
@@ -47,7 +48,7 @@
                         </li>
                         {{else}}
                         <li>
-                            <a class="btn-floating green saver" elementId={{article._id}}>
+                            <a class="btn-floating green darken-1 saver" elementId={{article._id}}>
                                 <i class="material-icons">save</i>
                             </a>
                         </li>

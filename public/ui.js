@@ -16,7 +16,7 @@ $(document).ready(function(){
 
      $(".saver").on("click", function(){
        const theId = $(this).attr("elementId");
-       
+
                $.ajax({
                  type: "PUT",
                  url: "/save",
@@ -24,7 +24,8 @@ $(document).ready(function(){
                    id: theId
                  }
                }).done(function() {
-                 console.log("NAILED IT");
+                 console.log("Item updated")
+              
                });
 
 

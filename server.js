@@ -29,19 +29,15 @@ require("./routes/notes.js")(app);
 var mongoose = require("mongoose");
 
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/viceWeb");
 
-
-
-
-
+mongoose.connect(
+    process.env.MONGODB_URI || "mongodb://localhost/viceWeb",{
+        useMongoClient: true
+    }
+)
 
 
 app.listen(PORT, function() {
     console.log("APP is listening on Port: " + PORT);
 });
 
-
-// app.listen(PORT, function() {
-//     console.log("APP is listening on Port: " + PORT);
-// });

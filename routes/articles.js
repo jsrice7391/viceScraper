@@ -61,14 +61,11 @@ module.exports = (app) => {
     })
 
     app.put("/save", function(req,res){
-        console.log(req.body.id)
-        db.Article.findByIdAndUpdate(req.body.id, { saved: true },function(err,article){
-              if(err){
-                  throw err
-              }else{
-                  res.redirect("/saved");
-              }
-          })
+    db.Article.findOneAndUpdate({ _id: req.body.id }, {saved: true})
+      .then(dbModel => dbModel)
+      .then(dbModel => res.redirect(`/article/${dbModel.title}`))
+      .catch(err => res.status(422).json(err));
+
     });
 
     app.get("/saved", function(req,res){

@@ -4,6 +4,13 @@ const request = require("request");
 const Article = require("../models/article.js");
 const mongoose = require("mongoose");
 const db = require("../models")
+const exphbs = require("express-handlebars");
+const paginate = require("handlebars-paginate");
+const Handlebars = require("handlebars");
+
+Handlebars.registerHelper("paginate", paginate)
+
+
 
 
 
@@ -49,9 +56,12 @@ module.exports = (app) => {
     })
 
     app.get("/", function(req, res) {
-        db.Article.find({}).sort({date: 1}).exec((err,articles)=>{
-            if(err){throw err}else {res.render("index",{articles: articles})}
-            })
+        db.Article.find({}).sort({date: 1})
+        .exec((err,articles)=>{
+            if(err){throw err}
+            res.render("index", {articles: articles})
+        })
+
     });
  
     app.get("/articles/scrape", function(req, res) {

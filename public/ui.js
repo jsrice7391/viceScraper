@@ -3,9 +3,9 @@ $(document).ready(function(){
      $(".button-collapse").sideNav();
 
        $("#articleModal").modal({
-         dismissible: false, // Modal can be dismissed by clicking outside of the modal
+         dismissible: false, 
          ready: function(modal, trigger) {
-      
+          //  Get the articles from theb 
            $.get("/articles/scrape").done(function(data){
                 $("#articleCount").text(`Articles scraped from Vice`)
            });

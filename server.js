@@ -3,8 +3,10 @@ const app = express();
 const hbs = require("express-handlebars");
 const path = require("path");
 const bodyParser = require("body-parser");
+const paginate = require("handlebars-paginate")
 
 var PORT = process.env.PORT || 8000;
+
 
 
 // Allow boy barser to parse the data

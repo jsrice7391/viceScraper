@@ -1,17 +1,22 @@
 $(document).ready(function(){
 
-
      $(".button-collapse").sideNav();
 
-     $("#articleModal").on("click", function(){
-         $.get("/articles/scrape",function(data){
-            $("#articleModal").modal();
-         });
-     });
+       $("#articleModal").modal({
+         dismissible: false, // Modal can be dismissed by clicking outside of the modal
+         ready: function(modal, trigger) {
+           // Callback for Modal open. Modal and trigger parameters available.
+           $.get("/articles/scrape").done(function(data){
+                $("#articleCount").text(`Articles scraped from Vice`)
+           });
+         },
+         complete: function() {
+           location.reload();
+         } // Callback for Modal close
+       });
 
-     $("#articleModal").on("hidden", function() {
-        console.log("HIDDEN")
-     });
+
+
 
      $(".saver").on("click", function(){
        const theId = $(this).attr("elementId");
@@ -27,9 +32,6 @@ $(document).ready(function(){
                  }
                });
      })
-
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
 
     $(".commentDelete").on("click", function(){
               const buttonId = $(this).attr("elementId");

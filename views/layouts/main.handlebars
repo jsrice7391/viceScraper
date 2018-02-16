@@ -25,17 +25,16 @@
 
 
 
-    <title>Document</title>
+    <title>Vice Scraper</title>
 </head>
 <body>
     <!-- Modal Structure -->
     <div id="articleModal" class="modal">
         <div class="modal-content">
-            <h4>Articles have been Scraped from VICE!</h4>
-            
+            <h4 id="articleCount"></h4>
         </div>
         <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">CLOSE </a>
         </div>
     </div>
 
@@ -53,7 +52,7 @@
                     <a href="/saved">Saved</a>
                 </li>
                 <li>
-                    <a id="articleModal" class="waves-effect waves-light btn modal-trigger" href="#articleModal">Scrape for articles</a>
+                    <a href="#articleModal" data-target="articleModal" class="waves-effect waves-light btn modal-trigger">Scrape for articles</a>
                 </li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
@@ -62,7 +61,7 @@
                     <a href="/saved">Saved</a>
                 </li>
                 <li>
-                    <a id="articleModal"href="/articles/scrape" class="modal-action modal-close waves-effect waves-green btn-flat">Scrape for articles</a>
+                    <a  href="#articleModal" data-target="articleModal" class="modal-action modal-close waves-effect waves-green btn-flat">Scrape for articles</a>
                 </li>
             </ul>
         </div>

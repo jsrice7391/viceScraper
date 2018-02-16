@@ -5,15 +5,19 @@ $(document).ready(function(){
        $("#articleModal").modal({
          dismissible: false, // Modal can be dismissed by clicking outside of the modal
          ready: function(modal, trigger) {
-           // Callback for Modal open. Modal and trigger parameters available.
+      
            $.get("/articles/scrape").done(function(data){
                 $("#articleCount").text(`Articles scraped from Vice`)
            });
          },
          complete: function() {
            location.reload();
-         } // Callback for Modal close
+         }
        });
+
+       $("#modal1").modal({
+         dismissible: true
+       })
 
 
 

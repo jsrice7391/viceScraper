@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
 
-
      $(".button-collapse").sideNav();
 
      $("#articleModal").on("click", function(){
@@ -16,7 +15,6 @@ $(document).ready(function(){
 
      $(".saver").on("click", function(){
        const theId = $(this).attr("elementId");
-
                $.ajax({
                  type: "PUT",
                  url: "/save",
@@ -35,15 +33,17 @@ $(document).ready(function(){
 
     $(".commentDelete").on("click", function(){
               const buttonId = $(this).attr("elementId");
-
               $.ajax({
                 type: "PUT",
                 url: "/notes",
                 data: {
                   id: buttonId
                 }
-              }).done(function() {
-                console.log("NAILED IT");
+              }).done(function(response) {
+                if(response.result == "good"){
+                  location.reload();
+                }
+            
               });
     })
 

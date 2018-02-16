@@ -8,7 +8,9 @@ module.exports = (app) => {
 
     app.put("/notes", function(req, res){
      db.Note.findByIdAndRemove(req.body.id)
-     .then(note => res.redirect(`/`))
+     .then(note => {if(note){
+         res.status(200).send({result: "good"})
+     }})
     .catch(err => res.status(422).json(err));
     })
 

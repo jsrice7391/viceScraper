@@ -30,11 +30,7 @@ var mongoose = require("mongoose");
 
 mongoose.Promise = Promise;
 
-mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://localhost/viceWeb",{
-        useMongoClient: true
-    }
-)
+mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/viceWeb")
 
 
 app.listen(PORT, function() {

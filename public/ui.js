@@ -23,12 +23,11 @@ $(document).ready(function(){
                  data: {
                    id: theId
                  }
-               }).done(function() {
-                 console.log("Item updated")
-              
+               }).done(function(response) {
+                 if(response.result === "good"){
+                   location.reload();
+                 }
                });
-
-
      })
 
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered

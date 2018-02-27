@@ -3,8 +3,10 @@ const app = express();
 const hbs = require("express-handlebars");
 const path = require("path");
 const bodyParser = require("body-parser");
+const paginate = require("handlebars-paginate")
 
 var PORT = process.env.PORT || 8000;
+
 
 
 // Allow boy barser to parse the data
@@ -29,19 +31,11 @@ require("./routes/notes.js")(app);
 var mongoose = require("mongoose");
 
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://heroku_7p68d9dx:p87r9sgoneb9rr7c4joo6d430g@ds035290.mlab.com:35290/heroku_7p68d9dx");
 
-
-
-
-
+mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost/viceWeb")
 
 
 app.listen(PORT, function() {
     console.log("APP is listening on Port: " + PORT);
 });
 
-
-// app.listen(PORT, function() {
-//     console.log("APP is listening on Port: " + PORT);
-// });

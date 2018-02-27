@@ -7,13 +7,11 @@ const db = require("../models")
 module.exports = (app) => {
 
     app.put("/notes", function(req, res){
-        db.Note.findByIdAndRemove(req.body.id, (err, result) => {
-            if(err){
-                return console.log(err)
-            }else{
-                res.status(200).send("Item deleted")
-            }
-        })
+     db.Note.findByIdAndRemove(req.body.id)
+     .then(note => {if(note){
+         res.status(200).send({result: "good"})
+     }})
+    .catch(err => res.status(422).json(err));
     })
 
     app.post("/notes", function(req,res){
@@ -22,7 +20,7 @@ module.exports = (app) => {
         }).then(function(dbNote){
            return  db.Article.findOneAndUpdate({ title: req.body.article }, { $push: { notes: dbNote}}, { new: true })
         }).then(function(dbArticle){
-            res.redirect("/")
+            res.redirect(`/article/${dbArticle.title}`)
         })
     })
 

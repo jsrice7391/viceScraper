@@ -1,0 +1,35 @@
+
+
+
+
+
+<div id="hero">
+    <h1 class="center-align">Vice Scraper</h1>
+</div>
+
+
+
+
+
+    <div class="row">
+        <div class="container">
+   {{#each articles}}
+        <div class="col s12 m6">
+            <div class="card blue darken-3">
+                <div class="card-content white-text">
+                    <a href="article/{{title}}"><span class="card-title">{{title}}</span></a>
+                    <p>{{subText}}</p>
+                </div>
+                <div class="card-action">
+                    <p>{{author}}</p>
+                </div>
+            </div>
+          
+        </div>
+        {{/each}}
+
+    
+
+    </div>
+
+        </div>

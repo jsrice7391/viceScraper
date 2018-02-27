@@ -4,28 +4,29 @@ const Schema = mongoose.Schema;
 
 
 var ArticleSchema = new Schema({
-    title: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    author: {
-        type: String,
-        required: true
-    },
-    link: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    subText: {
-        type: String
-    },
-    saved:{
-        type: Boolean,
-        default: false
-    },
-    notes: [
+  title: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  author: {
+    type: String,
+    required: true
+  },
+  date: { type: Date, default: Date.now },
+  link: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  subText: {
+    type: String
+  },
+  saved: {
+    type: Boolean,
+    default: false
+  },
+  notes: [
     {
       // Store ObjectIds in the array
       type: Schema.Types.ObjectId,

@@ -4,6 +4,13 @@ const request = require("request");
 const Article = require("../models/article.js");
 const mongoose = require("mongoose");
 const db = require("../models")
+const exphbs = require("express-handlebars");
+const paginate = require("handlebars-paginate");
+const Handlebars = require("handlebars");
+
+Handlebars.registerHelper("paginate", paginate)
+
+
 
 
 
@@ -49,11 +56,13 @@ module.exports = (app) => {
     })
 
     app.get("/", function(req, res) {
-        db.Article.find({}, function(err, results){
-            if(err) throw err;
-            res.render("index", {articles: results})
+        db.Article.find({}).sort({date: 1})
+        .exec((err,articles)=>{
+            if(err){throw err}
+            res.render("index", {articles: articles})
         })
-        })
+
+    });
  
     app.get("/articles/scrape", function(req, res) {
         getArticles()
@@ -61,14 +70,17 @@ module.exports = (app) => {
     })
 
     app.put("/save", function(req,res){
-        console.log(req.body.id)
-        db.Article.findByIdAndUpdate(req.body.id, { saved: true },function(err,article){
-              if(err){
-                  throw err
-              }else{
-                  res.redirect("/saved");
-              }
-          })
+        console.log(req.body);
+    db.Article.findOneAndUpdate({ _id: req.body.id }, {saved: true})
+      .then(dbModel =>{
+          if(dbModel){
+              return res
+                .status(200)
+                .send({result:"good"});
+          }
+      })
+      .catch(err => res.status(422).json(err));
+
     });
 
     app.get("/saved", function(req,res){

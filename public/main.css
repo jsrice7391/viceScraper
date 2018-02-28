@@ -2,6 +2,10 @@
     float: left;
 }
 
+.delArticle {
+    float: right;
+
+}
 #hero{
     background-image: url("/public/images/book.jpg");
     height: 400px;

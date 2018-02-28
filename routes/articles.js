@@ -51,6 +51,20 @@ const getArticles = () => {
 
 module.exports = (app) => {
 
+    app.put("/unsave", (req, res) => {
+        
+        db.Article.findOneAndUpdate(({ _id: req.body.id }, {saved: false}))
+      .then(dbModel =>{
+          if(dbModel){
+              console.log(dbModel + "has been updated to: " + dbModel.saved)
+              return res
+                .status(200)
+                .send({result:"good"});
+          }
+      })
+      .catch(err => res.status(422).json(err));
+    });
+
     app.put("/notes/:title", function(req, res){
         console.log(req.body.title)
     })
@@ -70,7 +84,6 @@ module.exports = (app) => {
     })
 
     app.put("/save", function(req,res){
-        console.log(req.body);
     db.Article.findOneAndUpdate({ _id: req.body.id }, {saved: true})
       .then(dbModel =>{
           if(dbModel){
@@ -90,7 +103,7 @@ module.exports = (app) => {
             if(err){
                 throw err;
             }else{
-                res.status(200).send({result: "good"});
+                res.render("saved",{articles: results})
             }
         })
     })

@@ -35,6 +35,21 @@ $(document).ready(function(){
         })
        })
 
+        $(".unSaver").on("click", function() {
+          const unsaveId= $(this).attr("elementId");
+          $.ajax({
+            type: "PUT",
+            url: "/unsave",
+            data: {
+              id: unsaveId
+            }
+          }).done(function(response) {
+            if (response.result === "good") {
+              location.reload();
+            }
+          });
+        });
+
 
 
      $(".saver").on("click", function(){

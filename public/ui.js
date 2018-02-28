@@ -20,6 +20,21 @@ $(document).ready(function(){
        })
 
 
+       $(".delArticle").on("click", function(){
+         const delID = $(this).attr("elementid");
+        $.ajax({
+          url:"/deleteArticle",
+          method: "POST",
+          data: {
+            id: delID
+          }
+        }).done(function(response){
+          if(response.result === "good"){
+            location.reload();
+          }
+        })
+       })
+
 
 
      $(".saver").on("click", function(){

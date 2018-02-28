@@ -90,11 +90,18 @@ module.exports = (app) => {
             if(err){
                 throw err;
             }else{
-                res.render("saved",{articles: results})
+                res.status(200).send({result: "good"});
             }
         })
     })
 
+    app.post("/deleteArticle", function(req, res){
+        db.Article.findByIdAndRemove(req.body.id).exec(function(err, article){
+            if(err) return handleError(err);
+             res.status(200).send({result: "good"})
+        })
+    });
+  
 
     app.get("/article/:title", function(req, res){
         db.Article.findOne({ title: req.params.title })

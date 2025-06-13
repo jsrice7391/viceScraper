@@ -10,7 +10,7 @@
   "author": "Justin Rice <jsrice7391@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "cheerio": "^1.0.0",
+    "cheerio": "^1.1.0",
     "express": "^4.21.2",
     "express-handlebars": "^7.0.0",
     "handlebars": "^4.0.11",
